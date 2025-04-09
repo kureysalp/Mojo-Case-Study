@@ -1,0 +1,1 @@
+- Weapons,warriors ve gateler atlasMaterial kullanıyor. Geri Kalanları için istediğiniz material'i kullanabilirsiniz.
