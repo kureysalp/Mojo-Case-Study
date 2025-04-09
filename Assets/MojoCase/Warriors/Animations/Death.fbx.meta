@@ -16,7 +16,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftLowerLeg' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -24,7 +25,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -82,7 +83,332 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Death(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:Stickman
+      parentName: Death(Clone)
+      position: {x: -0, y: 1.108931, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hips
+      parentName: Death(Clone)
+      position: {x: -0.00729268, y: 0.5892462, z: -0.014064887}
+      rotation: {x: 0.0735835, y: 0.45490748, z: -0.031648893, w: 0.886929}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine
+      parentName: Hips
+      position: {x: -0, y: 0.097199, z: -0.000467}
+      rotation: {x: 0.06139943, y: -0.031216398, z: 0.026664678, w: 0.9972686}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine1
+      parentName: Spine
+      position: {x: -0, y: 0.113401, z: 0}
+      rotation: {x: 0.010800625, y: -0.012081658, z: -0.02047515, w: 0.99965906}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine2
+      parentName: Spine1
+      position: {x: -0, y: 0.129601, z: 0}
+      rotation: {x: 0.001929514, y: -0.01127315, z: -0.009234908, w: 0.999892}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Neck
+      parentName: Spine2
+      position: {x: -0, y: 0.145801, z: 0}
+      rotation: {x: -0.01487615, y: -0.085120454, z: 0.0148236025, w: 0.9961493}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: Neck
+      position: {x: -0, y: 0.186102, z: -0.000044999997}
+      rotation: {x: -0.040575158, y: -0.2034393, z: 0.049198397, w: 0.9770085}
+      scale: {x: 1, y: 1, z: 1}
+    - name: HeadTop_End
+      parentName: Head
+      position: {x: -0, y: 0.80216396, z: -0.00019400001}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftShoulder
+      parentName: Spine2
+      position: {x: -0.097394995, y: 0.112142, z: -0.000294}
+      rotation: {x: 0.6284653, y: -0.3446078, z: 0.5447676, w: 0.4353218}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftArm
+      parentName: LeftShoulder
+      position: {x: -0, y: 0.205998, z: 0}
+      rotation: {x: 0.23553208, y: -0.03592848, z: -0.13026123, w: 0.9624271}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftForeArm
+      parentName: LeftArm
+      position: {x: -0, y: 0.283081, z: 0}
+      rotation: {x: 0.18672559, y: 0.20390405, z: -0.69809794, w: 0.66046643}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftHand
+      parentName: LeftForeArm
+      position: {x: -0, y: 0.26027298, z: 0}
+      rotation: {x: 0.257411, y: -0.009283249, z: 0.002473066, w: 0.96625423}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightShoulder
+      parentName: Spine2
+      position: {x: 0.097394995, y: 0.112141, z: -0.00003}
+      rotation: {x: -0.45606703, y: -0.4144706, z: 0.70274866, w: -0.35547334}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightArm
+      parentName: RightShoulder
+      position: {x: -0, y: 0.205998, z: 0}
+      rotation: {x: 0.2843941, y: 0.03320151, z: -0.0014968019, w: 0.95813125}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightForeArm
+      parentName: RightArm
+      position: {x: -0, y: 0.283074, z: 0}
+      rotation: {x: 0.03419792, y: -0.024837364, z: 0.60511285, w: 0.795017}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightHand
+      parentName: RightForeArm
+      position: {x: -0, y: 0.26027098, z: 0}
+      rotation: {x: 0.08396894, y: 0.8987918, z: -0.19741404, w: 0.382296}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftUpLeg
+      parentName: Hips
+      position: {x: -0.156323, y: -0.054050002, z: 0.0039729998}
+      rotation: {x: -0.3597274, y: 0.46125498, z: 0.77580124, w: 0.23658504}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftLeg
+      parentName: LeftUpLeg
+      position: {x: -0, y: 0.339112, z: 0}
+      rotation: {x: -0.44129866, y: -0.14492935, z: 0.032613717, w: 0.8849787}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftFoot
+      parentName: LeftLeg
+      position: {x: -0, y: 0.339362, z: 0}
+      rotation: {x: 0.52110296, y: -0.47907472, z: 0.5071717, w: 0.49164623}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightUpLeg
+      parentName: Hips
+      position: {x: 0.156323, y: -0.054050002, z: 0.007084}
+      rotation: {x: 0.24314933, y: 0.19937658, z: 0.9027187, w: -0.29364315}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightLeg
+      parentName: RightUpLeg
+      position: {x: -0, y: 0.33903098, z: 0}
+      rotation: {x: -0.40073082, y: 0.033599377, z: 0.029292896, w: 0.9151108}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightFoot
+      parentName: RightLeg
+      position: {x: -0, y: 0.339348, z: 0}
+      rotation: {x: 0.5169377, y: 0.5184551, z: -0.49821168, w: 0.464505}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CharacterSkin
+      parentName: Death(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Clothes
+      parentName: CharacterSkin
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:StoneAge_Clothes01
+      parentName: Clothes
+      position: {x: -0.002891, y: 0.624202, z: 0.029702}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:StoneAge_Clothes02
+      parentName: Clothes
+      position: {x: -0.000964, y: 0.862675, z: 0.028606998}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:StoneAge_Clothes03
+      parentName: Clothes
+      position: {x: -0.007556, y: 0.883681, z: 0.028606998}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:StoneAge_Clothes04
+      parentName: Clothes
+      position: {x: -0, y: 0.852729, z: 0.028213}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:StoneAge_Clothes05
+      parentName: Clothes
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:StoneAge_Clothes06
+      parentName: Clothes
+      position: {x: -0, y: 1.173172, z: -0.057963}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:StoneAge_Clothes07
+      parentName: Clothes
+      position: {x: -0, y: 1.21951, z: -0.03498}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:StoneAge_Clothes08
+      parentName: Clothes
+      position: {x: -0, y: 1.172199, z: -0.020072}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:MiddleAge_Clothes01
+      parentName: Clothes
+      position: {x: 0.000399, y: 0.887566, z: 0.030165998}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:MiddleAge_Clothes02
+      parentName: Clothes
+      position: {x: -0.227345, y: 0.706975, z: 0.030165998}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:MiddleAge_Clothes03
+      parentName: Clothes
+      position: {x: -0, y: 0.653243, z: 0.024763998}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:MiddleAge_Clothes04
+      parentName: Clothes
+      position: {x: -0, y: 0.70495903, z: 0.00293}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:MiddleAge_Clothes05
+      parentName: Clothes
+      position: {x: -0, y: 1.2514409, z: -0.078072}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:MiddleAge_Clothes06
+      parentName: Clothes
+      position: {x: 0.005386, y: 1.3626939, z: -0.21935698}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:MiddleAge_Clothes07
+      parentName: Clothes
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:MiddleAge_Clothes08
+      parentName: Clothes
+      position: {x: -0, y: 1.3626939, z: -0.21935698}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:RenaissenceAge_Clothes01
+      parentName: Clothes
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:RenaissenceAge_Clothes02
+      parentName: Clothes
+      position: {x: -0, y: 0.651248, z: 0.030373}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:RenaissenceAge_Clothes03
+      parentName: Clothes
+      position: {x: -0, y: 0.64437896, z: 0.018343}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:RenaissenceAge_Clothes04
+      parentName: Clothes
+      position: {x: -0, y: 1.124159, z: -0.077101}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:RenaissenceAge_Clothes05
+      parentName: Clothes
+      position: {x: -0, y: 0.651055, z: 0.031816002}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:RenaissenceAge_Clothes06
+      parentName: Clothes
+      position: {x: -0, y: 0.65287495, z: 0.028712}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:RenaissenceAge_Clothes07
+      parentName: Clothes
+      position: {x: -0, y: 1.455252, z: -0.16483699}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:RenaissenceAge_Clothes08
+      parentName: Clothes
+      position: {x: -0, y: 1.4157001, z: -0.165867}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:ModernAge_Clothes08
+      parentName: Clothes
+      position: {x: -0, y: 1.12738, z: -0.041059997}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:ModernAge_Clothes07
+      parentName: Clothes
+      position: {x: -0, y: 1.12738, z: -0.041059997}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:ModernAge_Clothes06
+      parentName: Clothes
+      position: {x: -0, y: 1.12738, z: -0.041059997}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:ModernAge_Clothes05
+      parentName: Clothes
+      position: {x: -0, y: 1.176896, z: 0.030302}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:ModernAge_Clothes04
+      parentName: Clothes
+      position: {x: -0, y: 1.1239899, z: -0.009398}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:ModernAge_Clothes03
+      parentName: Clothes
+      position: {x: -0, y: 1.1560199, z: -0.093448}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:ModernAge_Clothes02
+      parentName: Clothes
+      position: {x: -0, y: 1.01846, z: -0.07955}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:ModernAge_Clothes01
+      parentName: Clothes
+      position: {x: -0, y: 1.01846, z: -0.07955}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:SpaceAge_Clothes01
+      parentName: Clothes
+      position: {x: -0, y: 1.132581, z: -0.033381}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:SpaceAge_Clothes02
+      parentName: Clothes
+      position: {x: -0, y: 1.132581, z: -0.033381}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:SpaceAge_Clothes03
+      parentName: Clothes
+      position: {x: -0, y: 1.132581, z: -0.033381}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:SpaceAge_Clothes04
+      parentName: Clothes
+      position: {x: -0, y: 1.132581, z: -0.033381}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:SpaceAge_Clothes05
+      parentName: Clothes
+      position: {x: -0, y: 1.132581, z: -0.033381}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:SpaceAge_Clothes06
+      parentName: Clothes
+      position: {x: -0, y: 1.132581, z: -0.033381}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:SpaceAge_Clothes07
+      parentName: Clothes
+      position: {x: -0, y: 1.132581, z: -0.033381}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamo:SpaceAge_Clothes08
+      parentName: Clothes
+      position: {x: -0, y: 1.132581, z: -0.033381}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
