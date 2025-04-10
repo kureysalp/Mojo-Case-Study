@@ -2,7 +2,7 @@
 
 namespace MojoCase.Config
 {
-    [CreateAssetMenu(fileName = "Player Config", menuName = "Player Config", order = 0)]
+    [CreateAssetMenu(fileName = "Player Config", menuName = "Scriptable Objects/Player Config", order = 0)]
     public class PlayerConfig : ScriptableObject
     {
         [SerializeField] private float _forwardSpeed;
