@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: 10eb2338677d8c544865c7e4b7945929, type: 2}
   _bulletSpawnPoint: {fileID: 1489895389}
+  _clothes: []
   _isActive: 0
 --- !u!136 &122661749
 CapsuleCollider:
@@ -191,7 +192,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1489895389}
   - {fileID: 1950846017}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -796,11 +796,11 @@ Transform:
   m_GameObject: {fileID: 1489895388}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.75}
+  m_LocalPosition: {x: 0, y: 0.065, z: -0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 122661752}
+  m_Father: {fileID: 1950846018}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1675433520
 GameObject:
@@ -931,12 +931,20 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 78db39b7bebaf42a0816fb4dacceae59, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -1824824446595371411, guid: 413cb045079ae4415b43e55179dcfad2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1489895389}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 413cb045079ae4415b43e55179dcfad2, type: 3}
 --- !u!4 &1950846017 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 413cb045079ae4415b43e55179dcfad2, type: 3}
+  m_PrefabInstance: {fileID: 1950846016}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1950846018 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1824824446595371411, guid: 413cb045079ae4415b43e55179dcfad2, type: 3}
   m_PrefabInstance: {fileID: 1950846016}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2124329644
