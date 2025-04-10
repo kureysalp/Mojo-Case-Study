@@ -1,21 +1,28 @@
-﻿using System;
+﻿using DG.Tweening;
+using MojoCase.Crowd;
+using MojoCase.Utilities;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace MojoCase.Game
 {
-    public class Gate : MonoBehaviour,IDamageable
+    public class Gate : MonoBehaviour, IDamageable
     {
-        private int _gateValue;
+        protected int GateValue;
 
         [SerializeField] private TextMeshPro _gateValueText;
 
         [SerializeField] private int _randomValueRange;
 
-        private bool _isGateLocked;
+        [SerializeField] private bool _isGateLocked;
         
         [SerializeField] private GameObject _lockedGateObject;
+
+        [SerializeField] private FloatReference _bounceEffectPower;
+        [SerializeField] private FloatReference _bounceEffectTime;
+        
+        private Animation _animation;
 
         private int _gateLockHealth;
 
@@ -27,7 +34,7 @@ namespace MojoCase.Game
                 _gateLockHealth = Random.Range(_randomValueRange / 2, _randomValueRange);
             }
             
-            _gateValue = Random.Range(-_randomValueRange, _randomValueRange);
+            GateValue = Random.Range(-_randomValueRange, _randomValueRange);
             SetGateValueText();
         }
 
@@ -37,7 +44,7 @@ namespace MojoCase.Game
                 GateLockHit();
             else
             {
-                _gateValue++;
+                GateValue++;
                 SetGateValueText();
             }
             
@@ -62,19 +69,28 @@ namespace MojoCase.Game
 
         private void SetGateValueText()
         {
-            var prefix = _gateValue < 0 ? "-" : "+";
+            var prefix = GateValue < 0 ? "-" : "+";
             
-            _gateValueText.SetText($"{prefix}{Mathf.Abs(_gateValue)}");
+            _gateValueText.SetText($"{prefix}{Mathf.Abs(GateValue)}");
         }
 
         private void GateHitAnimation()
         {
-            //TODO: Bounce anim and haptic.
+            transform.DOComplete();
+            transform.DOPunchScale(_bounceEffectPower.Value * Vector3.one, _bounceEffectTime.Value);
+            //TODO: Haptic.
         }
 
-        public virtual void ApplyGateEffect()
+        public virtual void ApplyGateEffect(CrowdManager crowdManager)
         {
-            //TODO: Close gate.
+            gameObject.SetActive(false);
+            CloseTheGate();
+        }
+
+        private void CloseTheGate()
+        {
+            GetComponent<Collider>().enabled = false;
+            _animation.Play();
         }
     }
 }

@@ -13,6 +13,8 @@ namespace MojoCase.Crowd
         [SerializeField] private Transform _bulletSpawnPoint;
 
         [SerializeField] private GameObject[] _clothes;
+        
+        private CrowdManager _crowdManager;
 
         private int _level;
 
@@ -24,12 +26,7 @@ namespace MojoCase.Crowd
 
         public bool _isActive;
 
-        private void Start()
-        {
-            SetupWarrior(1);
-        }
-
-        public void SetupWarrior(int level)
+        public void SetupWarrior(int level, int fireRateModifier, CrowdManager crowdManager)
         {
             _level = level;
             
@@ -37,6 +34,8 @@ namespace MojoCase.Crowd
                 cloth.SetActive(false);
             
             _clothes[_level-1].SetActive(true);
+            SetFireRateModifier(fireRateModifier);
+            _crowdManager = crowdManager;
         }
 
         private void Shoot()
@@ -55,6 +54,23 @@ namespace MojoCase.Crowd
             if(!_isActive) return;
             
             Shoot();
+        }
+
+        public void SetFireRateModifier(int rate)
+        {
+            _fireRateModifier = rate;
+        }
+
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.CompareTag("Block"))
+                Die();    
+        }
+
+        private void Die()
+        {
+            _crowdManager.KillWarrior(this);
         }
     }
 }
