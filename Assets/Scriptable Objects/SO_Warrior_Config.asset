@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c234b689a9475598a3df8cfee68873, type: 3}
   m_Name: SO_Warrior_Config
   m_EditorClassIdentifier: 
-  _baseFireRate: 1
+  _baseFireRate: 1.5
   _baseDamage: 1

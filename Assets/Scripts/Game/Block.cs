@@ -6,7 +6,13 @@ namespace MojoCase.Game
     public class Block : MonoBehaviour, IDamageable
     {
         private float _health;
-        private TextMeshPro _healthText;
+        [SerializeField] private TextMeshPro _healthText;
+
+        public void SetBlockHealth(float health)
+        {
+            _health = health;
+            SetHealthText();
+        }
         
         public void TakeDamage(int damage)
         {

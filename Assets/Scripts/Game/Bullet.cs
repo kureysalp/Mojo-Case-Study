@@ -43,5 +43,6 @@ namespace MojoCase.Game
             yield return new WaitForSeconds(_lifeTime);
             ObjectPooling.Instance.Deposit(gameObject);
         }
+        
     }
 }

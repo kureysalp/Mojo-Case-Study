@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using MojoCase.Crowd;
 using MojoCase.Utilities;
 using TMPro;
@@ -21,10 +22,23 @@ namespace MojoCase.Game
 
         [SerializeField] private FloatReference _bounceEffectPower;
         [SerializeField] private FloatReference _bounceEffectTime;
+
+        [SerializeField] private Color _positiveColor;
+        [SerializeField] private Color _negativeColor;
+        
+        private MaterialPropertyBlock _materialPropertyBlock;
+        [SerializeField] private Renderer _gateRenderer;
         
         private Animation _animation;
 
         private int _gateLockHealth;
+
+        private void Awake()
+        {
+            _animation = gameObject.GetComponent<Animation>();
+            _materialPropertyBlock = new MaterialPropertyBlock();
+            _gateRenderer.GetPropertyBlock(_materialPropertyBlock);
+        }
 
         private void Start()
         {
@@ -69,9 +83,13 @@ namespace MojoCase.Game
 
         private void SetGateValueText()
         {
-            var prefix = GateValue < 0 ? "-" : "+";
+            var isGateNegative = GateValue < 0;
+            var prefix =  isGateNegative ? "-" : "+";
             
             _gateValueText.SetText($"{prefix}{Mathf.Abs(GateValue)}");
+            
+            _materialPropertyBlock.SetColor("_BaseColor", isGateNegative ? _negativeColor : _positiveColor);
+            _gateRenderer.SetPropertyBlock(_materialPropertyBlock);
         }
 
         private void GateHitAnimation()
@@ -83,7 +101,6 @@ namespace MojoCase.Game
 
         public virtual void ApplyGateEffect(CrowdManager crowdManager)
         {
-            gameObject.SetActive(false);
             CloseTheGate();
         }
 

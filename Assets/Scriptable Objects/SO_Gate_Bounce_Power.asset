@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b993bf7382df84042b26f02e918446d2, type: 3}
   m_Name: SO_Gate_Bounce_Power
   m_EditorClassIdentifier: 
-  Value: 0.2
+  Value: 0.05

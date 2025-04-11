@@ -6,6 +6,7 @@ namespace MojoCase.Utilities
     {
         public static void ResetVelocity(this Rigidbody rigidbody)
         {
+            if(rigidbody.isKinematic) return;
             rigidbody.velocity = Vector3.zero;
             rigidbody.angularVelocity = Vector3.zero;
         }
