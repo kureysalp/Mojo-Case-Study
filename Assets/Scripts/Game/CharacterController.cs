@@ -1,8 +1,9 @@
 using System;
 using MojoCase.Config;
+using MojoCase.Manager;
 using UnityEngine;
 
-namespace MojoCase
+namespace MojoCase.Game
 {
     public class CharacterController : MonoBehaviour
     {
@@ -16,6 +17,22 @@ namespace MojoCase
         private Vector3 _movementVector;
 
         private Vector3 _playerSwerveStartPosition;
+        
+        private bool _isControllerActive;
+
+        private void Awake()
+        {
+            GameManager.OnGameStart += ActivateTheController;
+            GameManager.OnGameEnded += DeactivateTheController;
+        }
+
+        private void Update()
+        {
+            if(!_isControllerActive) return;
+            
+            SwerveInput();
+            Movement();
+        }
         
         private void SwerveInput()
         {
@@ -47,17 +64,30 @@ namespace MojoCase
             expectedHorizontalPosition.y = 0;
             expectedHorizontalPosition.z = 0;
             
-            if (expectedHorizontalPosition.magnitude > _playerConfig.HorizontalMovementLimit) 
-                horizontalMovement = Vector3.zero;
+            if (expectedHorizontalPosition.magnitude > _playerConfig.HorizontalMovementLimit)
+            {
+                var difference = _playerConfig.HorizontalMovementLimit - Mathf.Abs(transform.position.x);
+                horizontalMovement = horizontalMovement.normalized * difference;
+            }
               
             var forwardMovement = _playerConfig.ForwardSpeed * Time.deltaTime * Vector3.forward;
             transform.Translate(forwardMovement + horizontalMovement);
         }
 
-        private void Update()
+        private void ActivateTheController()
         {
-            SwerveInput();
-            Movement();
+            _isControllerActive = true;
+        }
+        
+        private void DeactivateTheController()
+        {
+            _isControllerActive = false;
+        }
+
+        private void OnDisable()
+        {
+            GameManager.OnGameStart += ActivateTheController;
+            GameManager.OnGameEnded += DeactivateTheController;
         }
     }
 }

@@ -2,11 +2,12 @@
 using GPHive.Game;
 using MojoCase.Config;
 using MojoCase.Manager;
+using MojoCase.Utilities;
 using UnityEngine;
 
 namespace MojoCase.Crowd
 {
-    public class Warrior : MonoBehaviour
+    public class Warrior : Poolable
     {
         [SerializeField] private WarriorConfig  _config;
         

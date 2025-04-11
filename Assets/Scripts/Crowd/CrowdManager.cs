@@ -1,21 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MojoCase.Manager;
+using MojoCase.Utilities;
 using UnityEngine;
 
 namespace MojoCase.Crowd
 {
     public class CrowdManager : MonoBehaviour
     {
-        private List<Warrior> _warriors = new();
+        private readonly List<Warrior> _warriors = new();
 
         private int _fireRateModifier;
 
+        private void Awake()
+        {
+            GameManager.OnGameStart += EnableShooting;
+            GameManager.OnGameEnded += DisableShooting;
+        }
+        
         private void Start()
         {
-            var warriorsAtStart = GetComponentsInChildren<Warrior>();
-            foreach (var warrior in warriorsAtStart)
-                AddWarrior(warrior,1);
+            var warrior = Poolable.Get<Warrior>();
+            AddWarrior(warrior,1);
         }
 
         private void AddWarrior(Warrior warrior, int level)
@@ -23,20 +28,23 @@ namespace MojoCase.Crowd
             _warriors.Add(warrior);
             warrior.SetupWarrior(level,_fireRateModifier, this);
             
+            warrior.transform.SetParent(transform);
+            warrior.transform.ResetLocalTransform();
+            
             //TODO: Set warrior position.
         }
 
         private void RemoveWarrior(Warrior warrior)
         {
             _warriors.Remove(warrior);
-            ObjectPooling.Instance.Deposit(warrior.gameObject);
+            warrior.ReturnToPool();
         }
 
         public void AddWarriorInBulk(int count, int level)
         {
             for (int i = 0; i < count; i++)
             {
-                var warrior = ObjectPooling.Instance.GetFromPool($"Warrior_Level_{level}");
+                var warrior = Poolable.Get<Warrior>();
                 AddWarrior(warrior.GetComponent<Warrior>(), level); // Come back here to fix getcomponent on every add. 
             }
         }
@@ -60,9 +68,26 @@ namespace MojoCase.Crowd
 
         public void KillWarrior(Warrior warrior)
         {
-            _warriors.Remove(warrior);
-            ObjectPooling.Instance.Deposit(warrior.gameObject);
+            RemoveWarrior(warrior);
             //TODO: Play particle on it's position.
+        }
+
+        private void EnableShooting()
+        {
+            foreach (var warrior in _warriors)
+                warrior._isActive = true;
+        }
+        
+        private void DisableShooting()
+        {
+            foreach (var warrior in _warriors)
+                warrior._isActive = false;
+        }
+
+        private void OnDisable()
+        {
+            GameManager.OnGameStart -= EnableShooting;
+            GameManager.OnGameEnded -= DisableShooting;
         }
     }
 }
