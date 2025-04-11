@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using DG.Tweening;
+using MojoCase.Utilities;
+using TMPro;
 using UnityEngine;
 
 namespace MojoCase.Game
@@ -8,6 +10,9 @@ namespace MojoCase.Game
         private float _health;
         [SerializeField] private TextMeshPro _healthText;
 
+        [SerializeField] private FloatReference _hitEffectPower;
+        [SerializeField] private FloatReference _hitEffectTime;
+
         public void SetBlockHealth(float health)
         {
             _health = health;
@@ -16,12 +21,14 @@ namespace MojoCase.Game
         
         public void TakeDamage(int damage)
         {
-            _health -= damage;
-            
+            _health--;
             SetHealthText();
             
             if(_health <= 0)
                 DestroyTheBlock();
+            
+            transform.DOComplete();
+            transform.DOPunchScale(Vector3.one * _hitEffectPower.Value, _hitEffectTime.Value);
         }
 
         private void DestroyTheBlock()
@@ -32,8 +39,6 @@ namespace MojoCase.Game
         private void SetHealthText()
         {
             _healthText.SetText(_health.ToString());
-            
-            //TODO: Health text pop animation.
         }
     }
 }

@@ -30,17 +30,20 @@ namespace MojoCase.Manager
         public void WinTheLevel()
         {
             OnLevelSuccess?.Invoke();
+            EndTheGame();
         }
         
         public void FailTheLevel()
         {
             OnLevelFailed?.Invoke();
+            EndTheGame();
         }
         
         private void EndTheGame()
         {
             _currentGameState = GameState.Ended;
-            OnGameEnded?.Invoke();
+            OnGameEnded?.Invoke(); 
+            ObjectPooling.Instance.DepositAll();
         }
 
         public void LoadTheLevel()

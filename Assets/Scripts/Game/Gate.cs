@@ -1,6 +1,7 @@
 ﻿using System;
 using DG.Tweening;
 using MojoCase.Crowd;
+using MojoCase.Manager;
 using MojoCase.Utilities;
 using TMPro;
 using UnityEngine;
@@ -15,8 +16,6 @@ namespace MojoCase.Game
         [SerializeField] private TextMeshPro _gateValueText;
 
         [SerializeField] private int _randomValueRange;
-
-        [SerializeField] private bool _isGateLocked;
         
         [SerializeField] private GameObject _lockedGateObject;
 
@@ -31,7 +30,6 @@ namespace MojoCase.Game
         
         private Animation _animation;
 
-        private int _gateLockHealth;
 
         private void Awake()
         {
@@ -42,43 +40,16 @@ namespace MojoCase.Game
 
         private void Start()
         {
-            if(_isGateLocked)
-            {
-                _lockedGateObject.SetActive(true);
-                _gateLockHealth = Random.Range(_randomValueRange / 2, _randomValueRange);
-            }
-            
             GateValue = Random.Range(-_randomValueRange, _randomValueRange);
             SetGateValueText();
         }
 
         public void TakeDamage(int damage)
         {
-            if(_isGateLocked)
-                GateLockHit();
-            else
-            {
-                GateValue++;
-                SetGateValueText();
-            }
+            GateValue++;
+            SetGateValueText();
             
             GateHitAnimation();
-        }
-
-        private void GateLockHit()
-        {
-            _gateLockHealth--;
-            
-            if(_gateLockHealth <= 0)
-                UnlockGate();
-        }
-
-        private void UnlockGate()
-        {
-            _isGateLocked = false;
-            _lockedGateObject.SetActive(false);
-            
-            //TODO: Gate unlock effect
         }
 
         private void SetGateValueText()
@@ -101,6 +72,9 @@ namespace MojoCase.Game
 
         public virtual void ApplyGateEffect(CrowdManager crowdManager)
         {
+            var particle = ObjectPooling.Instance.GetFromPool("Gate_Pick_VFX");
+            particle.transform.position = transform.position+Vector3.up;
+            particle.SetActive(true);
             CloseTheGate();
         }
 

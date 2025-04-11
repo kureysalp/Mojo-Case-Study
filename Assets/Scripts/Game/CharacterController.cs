@@ -24,6 +24,7 @@ namespace MojoCase.Game
         {
             GameManager.OnGameStart += ActivateTheController;
             GameManager.OnGameEnded += DeactivateTheController;
+            GameManager.OnLevelLoaded += Reset;
         }
 
         private void Update()
@@ -32,6 +33,11 @@ namespace MojoCase.Game
             
             SwerveInput();
             Movement();
+        }
+
+        private void Reset()
+        {
+            transform.position = Vector3.zero;
         }
         
         private void SwerveInput()
@@ -88,6 +94,7 @@ namespace MojoCase.Game
         {
             GameManager.OnGameStart += ActivateTheController;
             GameManager.OnGameEnded += DeactivateTheController;
+            GameManager.OnLevelLoaded -= Reset;
         }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e7d9c0f0224c16b7b43f446a6b8ea3, type: 3}
   m_Name: SO_Player Config
   m_EditorClassIdentifier: 
-  _forwardSpeed: 7
+  _forwardSpeed: 5
   _horizontalSpeed: 1
   _swerveSensitivity: 1
   _horizontalMovementLimit: 5

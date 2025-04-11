@@ -41,12 +41,17 @@ namespace MojoCase.Crowd
         {
             _level = level;
             
-            foreach (var cloth in _clothes)
-                cloth.SetActive(false);
-            
-            _clothes[_level-1].SetActive(true);
+            ChangeCloth();
             SetFireRateModifier(fireRateModifier);
             _crowdManager = crowdManager;
+        }
+
+        private void ChangeCloth()
+        {
+            foreach (var cloth in _clothes)
+                cloth.SetActive(false);
+
+            _clothes[_level-1].SetActive(true);
         }
 
         private void Shoot()
@@ -86,6 +91,12 @@ namespace MojoCase.Crowd
             
             if(other.CompareTag("Gate"))
                 other.GetComponent<Gate>().ApplyGateEffect(_crowdManager);
+            
+            if(other.CompareTag("Finish"))
+                GameManager.Instance.WinTheLevel();
+            
+            if(other.CompareTag("CubeStation"))
+                other.GetComponent<CubeStation>().HideTheStation();
         }
 
         private void Die()
@@ -104,7 +115,11 @@ namespace MojoCase.Crowd
             _isActive = false;
             _animator.SetTrigger(IdleAnimationTrigger);
         }
-        
-        
+
+        public void LevelUp()
+        {
+            _level++;
+            ChangeCloth();
+        }
     }
 }

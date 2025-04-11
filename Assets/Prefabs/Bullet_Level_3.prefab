@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1627849615026415608}
   - component: {fileID: 1310377384001720130}
   - component: {fileID: -1391188606712481072}
+  - component: {fileID: 283296785663384993}
   m_Layer: 7
   m_Name: Bullet_Level_3
   m_TagString: Untagged
@@ -76,6 +77,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!111 &283296785663384993
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639048354005269204}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 09ec9bb080718ba4380886435c443ac4, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 09ec9bb080718ba4380886435c443ac4, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &4102126663035560518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -114,7 +131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb0a3b0479225484db7d0ed232af956f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 96.00001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb0a3b0479225484db7d0ed232af956f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -131,6 +148,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fb0a3b0479225484db7d0ed232af956f, type: 3}
       propertyPath: m_Name
       value: WoodStickGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fb0a3b0479225484db7d0ed232af956f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

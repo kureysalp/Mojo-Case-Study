@@ -10,6 +10,8 @@ namespace MojoCase.Game
         [SerializeField] private float _blockSpacingZ;
         [SerializeField] private int _blockCountInRow;
 
+        [SerializeField] private Transform _finishLine;
+
         private void Start()
         {
             GenerateBlocks();
@@ -17,7 +19,8 @@ namespace MojoCase.Game
         
         private void GenerateBlocks()
         {
-            var blockXStartPosition = ((_blockSpacingX * _blockCountInRow / 2) - (_blockSpacingX / 2))* Vector3.left;
+            var blockXStartPosition = (_blockSpacingX * _blockCountInRow / 2 - _blockSpacingX / 2) * Vector3.left;
+            var finishLinePos = transform.position;
             for (int blockRowIndex = 0; blockRowIndex < _blockHealthValues.Length; blockRowIndex++)
             {
                 var blockZPosition = Vector3.forward * _blockSpacingZ * blockRowIndex;
@@ -28,7 +31,9 @@ namespace MojoCase.Game
                     var blockPosition = Vector3.right * _blockSpacingX * blockIndexInRow + blockXStartPosition + blockZPosition + transform.position;
                     block.transform.position = blockPosition;
                 }
+                finishLinePos = blockZPosition + Vector3.forward * _blockSpacingZ;
             }
+            _finishLine.position += finishLinePos;
         }
     }
 }

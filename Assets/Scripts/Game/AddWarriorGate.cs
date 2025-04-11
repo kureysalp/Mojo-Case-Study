@@ -11,7 +11,7 @@ namespace MojoCase.Game
             switch (GateValue)
             {
                 case > 0:
-                    crowdManager.AddWarriorInBulk(GateValue, 1);
+                    crowdManager.AddWarriorInBulk(GateValue);
                     break;
                 case < 0:
                     crowdManager.RemoveWarriorInBulk(GateValue);

@@ -44,7 +44,7 @@ namespace MojoCase.Manager
                     pooled.SetActive(false);
                     currentPool.pooledObjects.Add(pooled);
                 }
-                GetFromPool(poolName);
+                objectToReturn = GetFromPool(poolName);
             }
 
             GotFromPool?.Invoke();

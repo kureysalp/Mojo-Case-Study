@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MojoCase.Game;
 using MojoCase.Manager;
 using MojoCase.Utilities;
 using UnityEngine;
@@ -10,23 +11,35 @@ namespace MojoCase.Crowd
         private readonly List<Warrior> _warriors = new();
 
         private int _fireRateModifier;
-
         private int _warriorCountInCurrentRing;
         private int _currentRing;
+        
         [SerializeField] private float _soldierSpacing;
         [SerializeField] private float _soldierPositionOffset;
+
+        private int _crowdLevel;
 
         private void Awake()
         {
             GameManager.OnGameStart += EnableShooting;
             GameManager.OnGameEnded += DisableShooting;
+            GameManager.OnLevelLoaded += Reset;
+            ExpBar.OnLevelUp += LevelUp;
+        }
+
+        private void Reset()
+        {
+            _warriors.Clear();
+            _crowdLevel = 1;
+            _currentRing = 1;
+            _fireRateModifier = 0;
+            var warrior = Poolable.Get<Warrior>();
+            AddWarrior(warrior, _crowdLevel);
         }
         
         private void Start()
         {
-            _currentRing = 1;
-            var warrior = Poolable.Get<Warrior>();
-            AddWarrior(warrior,1);
+            Reset();
         }
 
         private void AddWarrior(Warrior warrior, int level)
@@ -36,8 +49,6 @@ namespace MojoCase.Crowd
             
             warrior.transform.SetParent(transform);
             warrior.transform.ResetLocalTransform();
-            
-            //TODO: Set warrior position.
             
             if(_warriors.Count == 1) return;
             
@@ -72,14 +83,17 @@ namespace MojoCase.Crowd
         {
             _warriors.Remove(warrior);
             warrior.ReturnToPool();
+            
+            if(_warriors.Count == 0)
+                GameManager.Instance.FailTheLevel();
         }
 
-        public void AddWarriorInBulk(int count, int level)
+        public void AddWarriorInBulk(int count)
         {
             for (int i = 0; i < count; i++)
             {
                 var warrior = Poolable.Get<Warrior>();
-                AddWarrior(warrior, level); 
+                AddWarrior(warrior, _crowdLevel); 
                 warrior.ActivateTheWarrior();
             }
         }
@@ -91,11 +105,7 @@ namespace MojoCase.Crowd
                 if(_warriors.Count == 0) break;
                 var warriorToRemove= _warriors[^1];
                 RemoveWarrior(warriorToRemove);
-                //TODO: VFX
             }
-            
-            if(count >= _warriors.Count)
-                GameManager.Instance.FailTheLevel();
         }
 
         public void AddFireRateModifier(int fireRateModifier)
@@ -108,7 +118,9 @@ namespace MojoCase.Crowd
         public void KillWarrior(Warrior warrior)
         {
             RemoveWarrior(warrior);
-            //TODO: Play particle on it's position.
+            var particleObject = ObjectPooling.Instance.GetFromPool("Warrior_Death_VFX");
+            particleObject.transform.position = warrior.transform.position;
+            particleObject.SetActive(true);
         }
 
         private void EnableShooting()
@@ -127,6 +139,16 @@ namespace MojoCase.Crowd
         {
             GameManager.OnGameStart -= EnableShooting;
             GameManager.OnGameEnded -= DisableShooting;
+            GameManager.OnLevelLoaded -= Reset;
+            ExpBar.OnLevelUp -= LevelUp;
+        }
+
+        private void LevelUp()
+        {
+            _crowdLevel++;
+
+            foreach (var warrior in _warriors)
+                warrior.LevelUp();
         }
     }
 }

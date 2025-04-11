@@ -23,6 +23,9 @@ namespace MojoCase.Game
             if (other.transform.TryGetComponent(out IDamageable damageable))
             {
                 damageable.TakeDamage(_damage);
+                var bullet = ObjectPooling.Instance.GetFromPool("Bullet_Hit_VFX");
+                bullet.transform.position = transform.position;
+                bullet.SetActive(true);
                 ObjectPooling.Instance.Deposit(gameObject);
             }
         }
