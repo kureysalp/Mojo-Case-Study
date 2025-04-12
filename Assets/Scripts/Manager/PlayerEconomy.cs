@@ -22,6 +22,7 @@ namespace MojoCase.Manager
         public void AddCoin(int amount)
         {
             PlayerPrefs.SetInt("Player_Coin", GetPlayerCoinAmount() + amount);
+            SetCoinText();
         }
 
         private void SetCoinText()

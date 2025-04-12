@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de30ec03591f4a528fd2a9b4cb29db34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinCount: 30
+  _coinCount: 20
   _coinExplosionForce: 7
   _coinSpawnRate: 40
   _coinWaitTime: 2

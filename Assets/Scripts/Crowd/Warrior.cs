@@ -19,6 +19,7 @@ namespace MojoCase.Crowd
         [SerializeField] private Transform _bulletSpawnPoint;
 
         [SerializeField] private GameObject[] _clothes;
+        [SerializeField] private GameObject _levelUpVfx;
         
         private CrowdManager _crowdManager;
         private Animator _animator;
@@ -30,7 +31,7 @@ namespace MojoCase.Crowd
 
         private float _lastShootTime;
         
-        public bool _isActive;
+        private bool _isActive;
 
         private void Awake()
         {
@@ -120,6 +121,7 @@ namespace MojoCase.Crowd
         {
             _level++;
             ChangeCloth();
+            _levelUpVfx.SetActive(true);
         }
     }
 }

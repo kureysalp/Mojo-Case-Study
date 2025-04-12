@@ -47,17 +47,16 @@ namespace MojoCase.Game
         private IEnumerator CO_CoinSender(Coin coin)
         {
             yield return new WaitForSeconds(_coinWaitTime);
-            
             var startPosition = coin.transform.position;
-            var positionOnUI = _camera.ScreenToWorldPoint(_coinUITransform.position);
-            positionOnUI.z = _playerTransform.position.z-_camera.transform.position.z;
-            
             var elapsedTime = 0f;
 
             while (elapsedTime < _coinTravelTime)
             {
                 elapsedTime += Time.deltaTime;
-                coin.transform.position = Vector3.Lerp(startPosition, positionOnUI, elapsedTime / _coinTravelTime);
+                var positionOnUI = _coinUITransform.position; 
+                positionOnUI.z = _playerTransform.position.z - _camera.transform.position.z;
+                var positionToCoinFly = _camera.ScreenToWorldPoint(positionOnUI);
+                coin.transform.position = Vector3.Lerp(startPosition, positionToCoinFly, elapsedTime / _coinTravelTime);
                 yield return null;
             }
             PlayerEconomy.Instance.AddCoin(1);
