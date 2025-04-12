@@ -68,11 +68,13 @@ namespace MojoCase.Game
 
         private void AddExp(int exp)
         {
+            if (_currentLevel == _maxLevel) return;
+            var expDifference = _expToLevelUp - _currentExp;
+            
             _currentExp += exp;
             if (_currentExp >= _expToLevelUp)
                 LevelUp();
-            
-            var expDifference = _expToLevelUp - _currentExp;
+           
             if (exp > expDifference)
                 _currentExp = exp - expDifference;
             

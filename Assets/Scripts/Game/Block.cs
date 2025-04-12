@@ -12,6 +12,9 @@ namespace MojoCase.Game
 
         [SerializeField] private FloatReference _hitEffectPower;
         [SerializeField] private FloatReference _hitEffectTime;
+        
+        [SerializeField] private GameObject _blockObject;
+        [SerializeField] private CoinSpawner _coinSpawner;
 
         public void SetBlockHealth(float health)
         {
@@ -33,7 +36,9 @@ namespace MojoCase.Game
 
         private void DestroyTheBlock()
         {
-            gameObject.SetActive(false);
+            GetComponent<Collider>().enabled = false;
+            _coinSpawner.SpawnCoins();
+            _blockObject.SetActive(false);
         }
 
         private void SetHealthText()

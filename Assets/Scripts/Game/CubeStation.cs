@@ -92,6 +92,8 @@ namespace MojoCase.Game
         {
             for (int i = 0; i < damage; i++)
             {
+                if (_cubes.Count == 0) break;
+                
                 var currentLayer = _layers[_currentRing - 1];
                 if (currentLayer.CubeCount == 0)
                 {

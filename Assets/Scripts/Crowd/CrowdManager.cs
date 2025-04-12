@@ -75,8 +75,6 @@ namespace MojoCase.Crowd
                 _currentRing++;
                 _warriorCountInCurrentRing = 0;
             }
-
-            Debug.Log(_currentRing);
         }
 
         private void RemoveWarrior(Warrior warrior)

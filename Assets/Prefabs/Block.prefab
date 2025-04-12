@@ -1,5 +1,54 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1064343370706592112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1521231096671236059}
+  - component: {fileID: 5100710540653886782}
+  m_Layer: 0
+  m_Name: Coin Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1521231096671236059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064343370706592112}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.12, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2236072162981005543}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5100710540653886782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064343370706592112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de30ec03591f4a528fd2a9b4cb29db34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coinCount: 30
+  _coinExplosionForce: 7
+  _coinSpawnRate: 40
+  _coinWaitTime: 2
+  _coinTravelTime: 1
 --- !u!1 &3865957032491048003
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,16 +74,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3865957032491048003}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.009}
+  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2236072162981005543}
+  m_Father: {fileID: 8533131655796447700}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.5}
+  m_AnchoredPosition: {x: 0, y: 0.012500048}
   m_SizeDelta: {x: 1.4774, y: 1.6625}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &4726767500810513099
@@ -202,8 +251,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1521231096671236059}
   - {fileID: 8533131655796447700}
-  - {fileID: 734442056556306312}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2357269867745811567
@@ -227,6 +276,8 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 0.25
     Variable: {fileID: 0}
+  _blockObject: {fileID: 9016231379164398446}
+  _coinSpawner: {fileID: 5100710540653886782}
 --- !u!65 &2914805263181488807
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -326,11 +377,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b8863636774df46e38b96cc40fbe1c52, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 734442056556306312}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8863636774df46e38b96cc40fbe1c52, type: 3}
 --- !u!4 &8533131655796447700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b8863636774df46e38b96cc40fbe1c52, type: 3}
+  m_PrefabInstance: {fileID: 8205980161026178623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9016231379164398446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b8863636774df46e38b96cc40fbe1c52, type: 3}
   m_PrefabInstance: {fileID: 8205980161026178623}
   m_PrefabAsset: {fileID: 0}

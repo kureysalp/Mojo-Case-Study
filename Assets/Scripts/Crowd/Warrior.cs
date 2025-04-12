@@ -26,7 +26,7 @@ namespace MojoCase.Crowd
         private int _level;
 
         private float _fireRateModifier;
-        private float FireRate => _config.BaseFireRate + _fireRateModifier * .1f;
+        private float FireRate => _config.BaseFireRate + _fireRateModifier * .01f;
 
         private float _lastShootTime;
         
